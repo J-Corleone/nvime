@@ -42,6 +42,20 @@ return {
             },
         },
         config = function(_, opts)
+            -- scroll hover docs
+            vim.keymap.set({ "n", "i", "s" }, "<c-f>", function()
+                if not require("noice.lsp").scroll(4) then
+                    return "<c-f>"
+                end
+            end, { silent = true, expr = true })
+
+            vim.keymap.set({ "n", "i", "s" }, "<c-b>", function()
+                if not require("noice.lsp").scroll(-4) then
+                    return "<c-b>"
+                end
+            end, { silent = true, expr = true })
+
+
             -- HACK: noice shows messages from before it was enabled,
             -- but this is not ideal when Lazy is installing plugins,
             -- so clear the messages in this case.

@@ -14,11 +14,23 @@ return {
             {
                 "<leader>fe",
                 function()
-                    require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
+                    -- vim.env.PWD - always equals the dir where u open nvim.
+                    -- vim.fn.getcwd(-1, -1) - global current dir(will changed with :cd)
+                    -- getcwd() - current window dir (changed with :lcd)
+                    -- getcwd(-1) - current tab dir (changed with :tcd)
+                    require("neo-tree.command").execute({ toggle = true, dir = vim.fn.getcwd(-1, -1) })
                 end,
                 desc = "Explorer NeoTree (cwd)",
             },
+            {
+                "<leader>fE",
+                function()
+                require("neo-tree.command").execute({ toggle = true, dir = vim.fn.stdpath('config') })
+                end,
+                desc = "Explorer NeoTree (nvim config dir)",
+            },
             { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (cwd)", remap = true },
+            { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (nvim config dir)", remap = true },
             {
                 "<leader>ge",
                 function()
