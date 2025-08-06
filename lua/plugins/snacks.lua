@@ -192,8 +192,4 @@ return {
             end,
         })
     end,
-    config = function (_, opts)
-        require('snacks').setup(opts)
-        require('snacks').dim()
-    end,
 }
