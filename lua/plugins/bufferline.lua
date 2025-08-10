@@ -16,17 +16,28 @@ return {
     opts = {
         options = {
             diagnostics = "nvim_lsp",
-            always_show_bufferline = false,
             offsets = {
                 {
                     filetype = "neo-tree",
                     text = "Neo-tree",
                     highlight = "Directory",
                     text_align = "left",
+                    separator = true,
                 },
-                {
-                    -- filetype = "snacks_layout_box",
-                },
+            },
+
+            -- separator_style = 'slant',
+            always_show_bufferline = false,
+            hover = {
+                enabled = true,
+                delay = 200,
+                reveal = {'close'}
+            },
+            indicator = {
+            },
+        },
+        highlights = {
+            indicator_selected = {
             },
         },
     },
@@ -35,12 +46,12 @@ return {
         vim.opt.termguicolors = true
         require("bufferline").setup(opts)
 
-        -- vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
-        --     callback = function ()
-        --         vim.schedule(function ()
-        --             pcall(nvim_bufferline)
-        --         end)
-        --     end
-        -- })
+        vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
+            callback = function ()
+                vim.schedule(function ()
+                    pcall(nvim_bufferline)
+                end)
+            end
+        })
     end
 }
