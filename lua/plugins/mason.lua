@@ -1,9 +1,16 @@
+local border = require "plenary.window.border"
 return {
     {
         "williamboman/mason.nvim",
         build = ":MasonUpdate",
         lazy = false,
         keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
+        opts = {
+            ui = {
+                -- "rounded"
+                border = "rounded",
+            },
+        },
     },
     {
         "mason-org/mason-lspconfig.nvim",
