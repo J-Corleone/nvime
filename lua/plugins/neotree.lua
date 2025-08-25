@@ -1,15 +1,16 @@
 return {
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            "nvim-tree/nvim-web-devicons", -- optional, but recommended
-        },
-        lazy = false, -- neo-tree will lazily load itself
-        cmd = "Neotree",
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons", -- optional, but recommended
+		},
+		lazy = false, -- neo-tree will lazily load itself
+		cmd = "Neotree",
 
+        -- stylua: ignore
         keys = {
             {
                 "<leader>fe",
@@ -46,10 +47,10 @@ return {
                 desc = "Buffer Explorer",
             },
         },
-        opts = {
-            window = {
-                width = 30,
-            },
-        },
-    }
+		opts = {
+			window = {
+				width = 30,
+			},
+		},
+	},
 }

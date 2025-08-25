@@ -29,6 +29,7 @@ return {
 		ft = "lua",
 		cmd = "LazyDev",
 		opts = {
+            -- stylua: ignore
 			library = {
 				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 				{ path = "snacks.nvim", words = { "Snacks" } },
@@ -42,8 +43,8 @@ return {
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
-				cpp = { "clangd-format" },
-				c = { "clangd-format" },
+				cpp = { "clang_format" },
+				c = { "clang_format" },
 				-- Use the "_" filetype to run formatters on filetypes that don't
 				-- have other formatters configured.
 				["_"] = { "trim_whitespace" },
@@ -52,6 +53,13 @@ return {
 				-- These options will be passed to conform.format()
 				timeout_ms = 500,
 				lsp_format = "fallback",
+			},
+			formatters = {
+				clang_format = {
+					command = "clang-format",
+
+					args = { "--style={IndentWidth: 4, UseTab: Never}" },
+				},
 			},
 		},
 	},
@@ -65,6 +73,7 @@ return {
 				},
 			},
 		},
+        -- stylua: ignore
 		keys = {
 			{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
 			{ "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
@@ -135,8 +144,8 @@ return {
 				},
 			},
 		},
-		config = function()
-			require("tiny-inline-diagnostic").setup()
+		config = function(_, opts)
+			require("tiny-inline-diagnostic").setup(opts)
 			vim.diagnostic.config({ virtual_text = false }) -- Disable default virtual text
 		end,
 	},

@@ -12,36 +12,14 @@ return {
 			-- add any custom options here
 		},
 
+        -- stylua: ignore
 		keys = {
-			{
-				"<leader>qs",
-				function()
-					require("persistence").load()
-				end,
-				desc = "Restore Session",
-			},
-			{
-				"<leader>qS",
-				function()
-					require("persistence").select()
-				end,
-				desc = "Select Session",
-			},
-			{
-				"<leader>ql",
-				function()
-					require("persistence").load({ last = true })
-				end,
-				desc = "Restore Last Session",
-			},
-			{
-				"<leader>qd",
-				function()
-					require("persistence").stop()
-				end,
-				desc = "Don't Save Current Session",
-			},
+			{ "<leader>qs", function() require("persistence").load() end, desc = "Restore Session", },
+			{ "<leader>qS", function() require("persistence").select() end, desc = "Select Session", },
+			{ "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session", },
+			{ "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session", },
 		},
+
 		init = function()
 			local wk = require("which-key")
 			wk.add({ { "<leader>q", group = "Session" } })
@@ -94,9 +72,12 @@ return {
 				topdelete = { text = "" },
 				changedelete = { text = "▎" },
 			},
+
 			-- numhl = true,
 			-- linehl = true,
 			current_line_blame = true,
+
+            -- stylua: ignore
 			on_attach = function(buffer)
 				local gs = package.loaded.gitsigns
 
@@ -143,6 +124,7 @@ return {
 				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
 			end,
 		},
+
 		init = function()
 			require("snacks")
 

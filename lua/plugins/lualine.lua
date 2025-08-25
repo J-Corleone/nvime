@@ -31,6 +31,8 @@ return {
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
 			},
+
+            -- stylua: ignore
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff" },
