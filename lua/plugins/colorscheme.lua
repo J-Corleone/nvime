@@ -20,18 +20,22 @@ return {
 					IncSearch = { bg = colors.lavender },
 					CurSearch = { bg = colors.lavender },
 					MatchParen = { bg = colors.lavender, fg = colors.base, bold = true },
+
+					DapStopped = { fg = "#98c379" }, -- used for nvim-dap (#98c379 best)
 				}
 			end,
 			integrations = {
 				-- UI
+				treesitter = true,
 				neotree = true,
 				rainbow_delimiters = true,
 				render_markdown = true,
+				dap_ui = true,
 
 				-- Cmp and Lsp
-				treesitter = true,
 				blink_cmp = { style = "bordered" },
 				mason = true,
+				dap = true,
 
 				-- Qor
 				noice = true,

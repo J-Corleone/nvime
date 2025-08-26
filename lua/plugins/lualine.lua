@@ -39,12 +39,12 @@ return {
 				lualine_c = { "filename", "diagnostics" },
 				lualine_x = { "encoding", "filetype" },
 				lualine_y = {
-					"lsp_status",
-					{ "location", padding = { left = 0, right = 1 } },
+					"fileformat",
+                    "lsp_status",
 				},
 				lualine_z = {
-					"fileformat",
-					{ "progress", separator = " ", padding = { left = 0, right = 1 } },
+					{ "progress", separator = " ", padding = { left = 0, right = 0 } },
+					{ "location", padding = { left = 0, right = 1 } },
 				},
 			},
 		}

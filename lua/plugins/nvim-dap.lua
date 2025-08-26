@@ -139,60 +139,34 @@ return {
 		end,
 
 		init = function()
-			local dap_breakpoint_color = {
-				breakpoint = {
-					ctermbg = 0,
-					fg = "#993939",
-					bg = "#31353f",
-				},
-				logpoing = {
-					ctermbg = 0,
-					fg = "#61afef",
-					bg = "#31353f",
-				},
-				stopped = {
-					ctermbg = 0,
-					fg = "#98c379",
-					bg = "#31353f",
-				},
-			}
-			vim.api.nvim_set_hl(0, "DapBreakpoint", dap_breakpoint_color.breakpoint)
-			vim.api.nvim_set_hl(0, "DapLogPoint", dap_breakpoint_color.logpoing)
-			vim.api.nvim_set_hl(0, "DapStopped", dap_breakpoint_color.stopped)
 			vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
+
+            -- stylua: ignore
 			local dap_breakpoint = {
-				error = {
-					text = "◎",
-					texthl = "DapBreakpoint",
-					linehl = "DapBreakpoint",
-					numhl = "DapBreakpoint",
+				breakpos = {
+                    text = "⬤",
+					texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint",
 				},
 				condition = {
 					text = "",
-					texthl = "DapBreakpoint",
-					linehl = "DapBreakpoint",
-					numhl = "DapBreakpoint",
+					texthl = "DapBreakpointCondition",
+                    linehl = "DapBreakpointCondition", numhl = "DapBreakpointCondition",
 				},
 				rejected = {
 					text = "",
-					texthl = "DapBreakpoint",
-					linehl = "DapBreakpoint",
-					numhl = "DapBreakpoint",
+					texthl = "DapBreakpointRejected",
+                    linehl = "DapBreakpointRejected", numhl = "DapBreakpointRejected",
 				},
 				logpoint = {
 					text = "",
-					texthl = "DapLogPoint",
-					linehl = "DapLogPoint",
-					numhl = "DapLogPoint",
+					texthl = "DapLogPoint", linehl = "DapLogPoint", numhl = "DapLogPoint",
 				},
 				stopped = {
-					text = "",
-					texthl = "DapStopped",
-					linehl = "DapStopped",
-					numhl = "DapStopped",
+					text = "➤",
+					texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped",
 				},
 			}
-			vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)
+			vim.fn.sign_define("DapBreakpoint", dap_breakpoint.breakpos)
 			vim.fn.sign_define("DapBreakpointCondition", dap_breakpoint.condition)
 			vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
 			vim.fn.sign_define("DapLogPoint", dap_breakpoint.logpoint)
